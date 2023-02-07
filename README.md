@@ -1,5 +1,7 @@
 # Tento dokument obsahuje cvičné příkazy, neberte to jak o výstupní práci 
 
+[I'm an inline-style link](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
 
 # H1
 ## H2
