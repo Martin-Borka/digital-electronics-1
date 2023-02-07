@@ -1,3 +1,6 @@
+#Tento dokument obsahuje cvičné příkazy, neberte to jak o výstupní práci 
+
+
 # H1
 ## H2
 ### H3
