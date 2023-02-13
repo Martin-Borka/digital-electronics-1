@@ -1,5 +1,32 @@
 # Lab 2: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
 
+## Pre-Lab preparation
+
+*Digital* or *Binary comparator* compares the digital signals A, B presented at input terminal and produce outputs depending upon the condition of those inputs.
+
+1. Complete the truth table for 2-bit *Identity comparator* (B equals A), and two *Magnitude comparators* (B is greater than A, B is less than A). Note that, such a digital device has four inputs and three outputs/functions.
+
+   | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
+   | :-: | :-: | :-: | :-: | :-: | :-: |
+   |  0 | 0 0 | 0 0 | 0 | 1 | 0 |
+   |  1 | 0 0 | 0 1 | 0 | 0 | 1 |
+   |  2 | 0 0 | 1 0 | 0 | 0 | 1 |
+   |  3 | 0 0 | 1 1 | 0 | 0 | 1 |
+   |  4 | 0 1 | 0 0 |  | 0 |  |
+   |  5 | 0 1 | 0 1 |  | 1 |  |
+   |  6 | 0 1 | 1 0 |  | 0 |  |
+   |  7 | 0 1 | 1 1 |  | 0 |  |
+   |  8 | 1 0 | 0 0 |  | 0 |  |
+   |  9 | 1 0 | 0 1 |  | 0 |  |
+   | 10 | 1 0 | 1 0 |  | 1 |  |
+   | 11 | 1 0 | 1 1 |  | 0 |  |
+   | 12 | 1 1 | 0 0 |  | 0 |  |
+   | 13 | 1 1 | 0 1 |  | 0 |  |
+   | 14 | 1 1 | 1 0 |  | 0 |  |
+   | 15 | 1 1 | 1 1 |  | 1 |  |
+
+<a name="part1"></a>
+
 ### 2-bit comparator
 
 1. Karnaugh maps for other two functions of 2-bit comparator:
