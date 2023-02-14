@@ -25,17 +25,9 @@
    | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
    | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
-B>A:
 
-   SOPmin=b1*!a1+b1*b0*!a0+b0*!a0*!a1
-   
-   POSmin=(b1+b0)*(!a1+!a0)*(b0+!a1)*(b1+!a0)*(b1+!a1)
-   
-   ![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
 
-B<A:
-    
-   ![A](https://user-images.githubusercontent.com/65703172/218706653-a5029890-55e5-43bb-97ae-76e227b4903d.png)
+
 
 <a name="part1"></a>
 
@@ -45,11 +37,20 @@ B<A:
 
    Greater than:
 
-   ![K-maps](images/kmap_empty.png)
+   B>A:
 
+   SOPmin=b1*!a1+b1*b0*!a0+b0*!a0*!a1
+   
+   POSmin=(b1+b0)*(!a1+!a0)*(b0+!a1)*(b1+!a0)*(b1+!a1)
+   
+   ![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
+   
+   
    Less than:
 
-   ![K-maps](images/kmap_empty.png)
+   B<A:
+    
+   ![A](https://user-images.githubusercontent.com/65703172/218706653-a5029890-55e5-43bb-97ae-76e227b4903d.png)
 
 2. Mark the largest possible implicants in the K-map and according to them, write the equations of simplified SoP (Sum of the Products) form of the "greater than" function and simplified PoS (Product of the Sums) form of the "less than" function.
 
