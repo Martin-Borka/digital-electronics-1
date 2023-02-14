@@ -25,11 +25,15 @@
    | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
    | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
-B>A
-   y=b1*!a1+b1*b0*!a0+b0*!a0*!a1
+B>A:
+
+   SOPmin=b1*!a1+b1*b0*!a0+b0*!a0*!a1
+   
+   POSmin=(b1+b0)*(!a1+!a0)*(b0+!a1)*(b1+!a0)*(b1+!a1)
+   
    ![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
 
-B<A
+B<A:
     
    ![A](https://user-images.githubusercontent.com/65703172/218706653-a5029890-55e5-43bb-97ae-76e227b4903d.png)
 
