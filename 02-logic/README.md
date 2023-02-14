@@ -41,7 +41,7 @@
 
    SOPmin=b1 * !a1 + b1 * b0 * !a0 + b0 * !a0 * !a1
    
-   POSmin=(b1+b0)*(!a1+!a0)*(b0+!a1)*(b1+!a0)*(b1+!a1)
+   POSmin=(b1+b0) * (!a1+!a0) * (b0+!a1) * (b1+!a0) * (b1+!a1)
    
    ![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
    
