@@ -25,6 +25,12 @@
    | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
    | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
+B>A
+![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
+
+B<A
+![A](https://user-images.githubusercontent.com/65703172/218706653-a5029890-55e5-43bb-97ae-76e227b4903d.png)
+
 <a name="part1"></a>
 
 ### 2-bit comparator
