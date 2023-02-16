@@ -43,14 +43,14 @@
    
    POSmin=(b1+b0) * (!a1+!a0) * (b0+!a1) * (b1+!a0) * (b1+!a1)
    
-   ![B](https://user-images.githubusercontent.com/65703172/218706629-1061c96f-a586-4d74-8043-656cbbd07ffe.png)
+   ![image](https://user-images.githubusercontent.com/65703172/219328949-acc7bfd2-0c22-412d-bd07-16609b849bff.png)
    
    
    Less than:
 
    B<A:
     
-   ![A](https://user-images.githubusercontent.com/65703172/218706653-a5029890-55e5-43bb-97ae-76e227b4903d.png)
+   ![image](https://user-images.githubusercontent.com/65703172/219329023-244504f8-e1dc-416b-902c-c7a25f23bef4.png)
 
 2. Mark the largest possible implicants in the K-map and according to them, write the equations of simplified SoP (Sum of the Products) form of the "greater than" function and simplified PoS (Product of the Sums) form of the "less than" function.
 
