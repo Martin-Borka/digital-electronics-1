@@ -12,19 +12,6 @@
 1. Listing of VHDL architecture from source file `mux_3bit_4to1.vhd`. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
 ```vhdl
-architecture Behavioral of mux_3bit_4to1 is
-begin
-
-entity mux_3bit_4to1 is
- Port ( 
-        sel        : in  std_logic_vector((2-1) downto 0);
-        a          : in  std_logic;
-        b          : in  std_logic;
-        c          : in  std_logic;
-        d          : in  std_logic;
-        y          : out std_logic
-);
-end mux_3bit_4to1;
 
 architecture Behavioral of mux_3bit_4to1 is
 
