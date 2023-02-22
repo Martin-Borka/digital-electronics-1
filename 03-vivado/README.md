@@ -15,7 +15,28 @@
 architecture Behavioral of mux_3bit_4to1 is
 begin
 
-    -- WRITE YOUR CODE HERE
+entity mux_3bit_4to1 is
+ Port ( 
+        sel        : in  std_logic_vector((2-1) downto 0);
+        a          : in  std_logic;
+        b          : in  std_logic;
+        c          : in  std_logic;
+        d          : in  std_logic;
+        y          : out std_logic
+);
+end mux_3bit_4to1;
+
+architecture Behavioral of mux_3bit_4to1 is
+
+begin
+
+y <=    a when (sel = "00" ) else
+        b when (sel = "01" ) else
+        c when (sel = "10" ) else
+        d when (sel = "11" );
+
+
+end Behavioral;
 
 end architecture Behavioral;
 ```
