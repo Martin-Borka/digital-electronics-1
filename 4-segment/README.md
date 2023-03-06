@@ -74,6 +74,7 @@ OR
       d 		<= '1' when (SW = "0001" OR SW = "0010" or SW = "0100" or SW = "1000") else '0';
 
    ```
+ (veličiny a, b, c, d jsou jen pro lepší zobrazení v grafu)
 
 3. Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
