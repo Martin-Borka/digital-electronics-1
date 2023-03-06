@@ -58,7 +58,7 @@ OR
 
    ```vhdl
       LED(4) <= '1' when (SW = "0000") else '0';
-      LED(5) <= '1' when (SW = "1000") else '0';
+      LED(5) <= '1' when (SW > "1000") else '0';
       LED(6) <= SW(0);
       LED(7) <= '1' when (SW = "0001" OR SW = "0010" or SW = "0100" or SW = "1000") else '0';
 
