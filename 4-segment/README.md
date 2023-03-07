@@ -38,7 +38,7 @@
    -- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
    -- LED(5) <= WRITE YOUR CODE HERE
     
-      if (SW > '1000') then
+      if (SW > '1001') then
           LED(5) <= "1"; 
 
    -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
@@ -64,8 +64,8 @@ OR
       LED(4) 	<= '1' when (SW = "0000") else '0';
       a 		<= '1' when (SW = "0000") else '0';
 
-      LED(5) 	<= '1' when (SW > "1000") else '0';
-      b 		<= '1' when (SW > "1000") else '0';
+      LED(5) 	<= '1' when (SW > "1001") else '0';
+      b 		<= '1' when (SW > "1001") else '0';
 
       LED(6) 	<= SW(0);
       c 		<= SW(0);
