@@ -22,19 +22,21 @@ begin
         if rising_edge(clk) then
             if (rst = '1') then
                 s_q <= '0';
+                
             elsif (j ='0' and k='0') then
                 s_q <= s_q;
-            elsif (j ='0' and k='1') then
-            	s_q <= '0';
+                
             elsif (j ='1' and k='0') then
             	s_q <= '1';
+               
+            elsif (j ='0' and k='1') then
+            	s_q <= '0';
             else
                 s_q <= not s_q;
             end if;
         end if;
     end process p_jk_ff_rst;
 
-    -- Output ports are permanently connected to local signal
     q     <= s_q;
     q_bar <= not s_q;
 end architecture behavioral;
