@@ -21,21 +21,30 @@
                 dp_o  <= dp_i(0);
                 dig_o <= "1110";
             else
-                case s_cnt is
-                    when "11" =>
-                        s_hex <= data3_i;
-                        dp_o  <= dp_i(3);
-                        dig_o <= "0111";
+                case sig_cnt_2bit is
 
-                    when "10" =>
-                        -- WRITE YOUR CODE HERE
+          when "11" =>
+            sig_hex <= data3;
+            dp      <= dp_vect(3);
+            dig     <= "0111";
 
-                    when "01" =>
-                        -- WRITE YOUR CODE HERE
+          when "10" =>
+            -- DEFINE ALL OUTPUTS FOR "10" HERE
+            sig_hex <= data2;
+            dp      <= dp_vect(2);
+            dig     <= "1011";
 
-                    when others =>
-                        -- WRITE YOUR CODE HERE
-                end case;
+          when "01" =>
+            -- DEFINE ALL OUTPUTS FOR "01" HERE
+             sig_hex <= data1;
+            dp      <= dp_vect(1);
+            dig     <= "1101";
+          when others =>
+            -- DEFINE ALL OUTPUTS FOR "00" HERE
+            sig_hex <= data0;
+            dp      <= dp_vect(0);
+            dig     <= "1110";
+        end case;
             end if;
         end if;
     end process p_mux;
