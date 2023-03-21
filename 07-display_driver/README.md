@@ -97,4 +97,4 @@ Due to the physiological properties of human vision, it is necessary that the ti
   }
   ```
 
-<a name="part1"></a>   
+<a name="part1"></a>    
