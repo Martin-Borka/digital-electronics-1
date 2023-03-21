@@ -1,4 +1,4 @@
-```javascript
+
   {
     signal:
     [
@@ -25,7 +25,7 @@
       text: '                    4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms',
     },
   }
-  ```
+
 
 # Lab 7: Marti Borka
 
