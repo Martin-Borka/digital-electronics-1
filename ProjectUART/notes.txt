@@ -1,0 +1,15 @@
+https://lucidar.me/en/serialib/most-used-baud-rates-table/
+common baud rates
+
+8-N-1
+one start bit, eight (8) data bits, no (N) parity bit, and one (1) stop bit
+
+https://nandland.com/uart-serial-port-module/
+
+
+okopírovať úlohu č 7 a použiť súbory, clk, bin count, hex display a driver (možno aj úlohu č 8)
+start bit, 8 data bitov, a stop bit potom bude odoslanie dat
+spraviť posielanie presne podla obrázku
+páčkam priradiť SW namiesto 8 premenných na data z páčky (8 páčok)
+spraviť counter kde 0 bit bude start bit a 9 bit bude stop bit (8N1)
+potom spraviť to isté pre 6N1
