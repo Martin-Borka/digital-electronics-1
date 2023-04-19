@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 02/28/2023 11:25:19 AM
+-- Create Date: 02/28/2023 11:24:34 AM
 -- Design Name: 
 -- Module Name: hex_7seg - Behavioral
 -- Project Name: 
@@ -37,10 +37,29 @@ entity hex_7seg is
            seg : out STD_LOGIC_VECTOR (6 downto 0));
 end hex_7seg;
 
-architecture Behavioral of hex_7seg is
-begin
+----architecture body for seven-segment display decoder
 
- p_7seg_decoder : process (blank, hex) is
+architecture Behavioral of hex_7seg is
+
+begin
+  --------------------------------------------------------
+  -- p_7seg_decoder:
+  -- A combinational process for 7-segment display (Common
+  -- Anode) decoder. Any time "hex" or "blank" is changed,
+  -- the process is "executed". Output pin seg(6) controls
+  -- segment A, seg(5) segment B, etc.
+  --     segment A
+  --      | segment B
+  --      |  | segment C
+  --      +-+|  |   ...   segment G
+  --        ||+-+          |
+  --        |||            |
+  -- seg = "0000001"-------+
+  --
+  -- Display is clear/blank if signal blank = 1.
+  --------------------------------------------------------
+
+  p_7seg_decoder : process (blank, hex) is
 
   begin
 
@@ -51,51 +70,64 @@ begin
       case hex is
 
         when "0000" =>
+
           seg <= "0000001"; -- 0
 
         when "0001" =>
+
           seg <= "1001111"; -- 1
 
+        -- WRITE YOUR CODE HERE
         when "0010" =>
-          seg <= "0010010"; -- 2
-          
-        when "0011" =>
-          seg <= "0000110"; -- 3
-          
-        when "0100" =>
-          seg <= "1001100"; -- 4
+          seg <="0010010"; --2
         
+        when "0011" =>
+            seg <="0000110"; -- 3
+        
+        when "0100" =>
+            seg <="1001100"; -- 4
+            
         when "0101" =>
-          seg <= "0100100"; -- 5
+            seg <="0100100"; -- 5
         
         when "0110" =>
-          seg <= "0100000"; -- 6
-          
+            seg <="0100000"; --6
+            
         when "0111" =>
-          seg <= "0001111"; -- 7
+            seg <="0001111"; --7
+            
+        -- 2, 3, 4, 5, 6, 7
+
+
 
         when "1000" =>
+
           seg <= "0000000"; -- 8
-          
+
+        -- WRITE YOUR CODE HERE
+        -- 9, A, b, C, d
+        
         when "1001" =>
-          seg <= "0000100"; -- 9
-          
+            seg <="0000100"; --9
+            
         when "1010" =>
-          seg <= "0001000"; -- A
+            seg <="0001000"; --A
         
         when "1011" =>
-          seg <= "1100000"; -- b
-          
+            seg <="1100000"; --b
+        
         when "1100" =>
-          seg <= "0110001"; -- C
-          
+            seg <="0110001"; --C
+        
         when "1101" =>
-          seg <= "1000010"; -- d          
+            seg <="1000010"; --d
 
         when "1110" =>
+
           seg <= "0110000"; -- E
 
         when others =>
+
           seg <= "0111000"; -- F
 
       end case;
@@ -104,4 +136,7 @@ begin
 
   end process p_7seg_decoder;
 
-end Behavioral;
+end architecture behavioral;
+
+
+-- end Behavioral;

@@ -59,15 +59,12 @@ begin
       if (rst = '1') then           -- Synchronous reset
         sig_cnt <= (others => '0'); -- Clear all bits
       elsif (en = '1') then         -- Test if counter is enabled
-        
         -- TEST COUNTER DIRECTION HERE
-        if (cnt_up = '1') then
+        if (cnt_up ='1') then
           sig_cnt <= sig_cnt + 1;
-         else 
-         
-          sig_cnt <= sig_cnt - 1;
-         end if;
-          
+          else
+          sig_cnt <= sig_cnt -1;
+        end if;
       end if;
     end if;
 

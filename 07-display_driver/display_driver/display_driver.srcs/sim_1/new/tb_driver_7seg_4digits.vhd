@@ -85,26 +85,11 @@ begin
   begin
 
     sig_rst <= '0';
-    -- WRITE YOUR CODE HERE AND ACTIVATE RESET FOR A WHILE
-    
-            sig_rst <= '0';
     wait for 12 ns;
-
-    -- Reset activated
-    sig_rst <= '1';
-    wait for 13 ns;
-
-    -- Reset deactivated
+    sig_rst <= '1';-- WRITE YOUR CODE HERE AND ACTIVATE RESET FOR A WHILE
+    wait for 70 ns;
     sig_rst <= '0';
-    
-    wait for 100 ns;
-    
-    sig_rst <= '1';
-    wait for 20 ns;
 
-    -- Reset deactivated
-    sig_rst <= '0';
-    
     wait;
 
   end process p_reset_gen;
@@ -120,13 +105,11 @@ begin
     -- WRITE YOUR CODE HERE AND TEST INPUT VALUE
     -- Display "3.142"
     
-    sig_dp_vect <= "0111";
-    sig_data3 <= x"3";
-    sig_data2 <= x"1";
-    sig_data1 <= x"4";
     sig_data0 <= x"2";
-    
-    
+    sig_data1 <= x"4";
+    sig_data2 <= x"1";
+    sig_data3 <= x"3";
+    sig_dp_vect <= "0111";
 
     report "Stimulus process finished";
     wait;
