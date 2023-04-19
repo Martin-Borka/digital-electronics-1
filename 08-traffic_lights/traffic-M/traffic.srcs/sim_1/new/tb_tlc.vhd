@@ -1,6 +1,6 @@
 ----------------------------------------------------------
 --
--- Testbench for N-bit Up/Down binary counter.
+-- Template for traffic lights controller testbench.
 -- Nexys A7-50T, xc7a50ticsg324-1L
 -- TerosHDL, Vivado v2020.2, EDA Playground
 --
@@ -13,48 +13,40 @@
 library ieee;
   use ieee.std_logic_1164.all;
 
-------------------------------------------------------------
+----------------------------------------------------------
 -- Entity declaration for testbench
-------------------------------------------------------------
+----------------------------------------------------------
 
-entity tb_cnt_up_down is
+entity tb_tlc is
   -- Entity of testbench is always empty
-end entity tb_cnt_up_down;
+end entity tb_tlc;
 
-------------------------------------------------------------
+----------------------------------------------------------
 -- Architecture body for testbench
-------------------------------------------------------------
+----------------------------------------------------------
 
-architecture testbench of tb_cnt_up_down is
+architecture testbench of tb_tlc is
 
-  -- Number of bits for testbench counter
-  constant c_CNT_WIDTH         : natural := 3;
-  constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
+  -- Local constants
+  constant c_CLK_100MHZ_PERIOD : time := 10 ns;
 
   -- Local signals
   signal sig_clk_100mhz : std_logic;
   signal sig_rst        : std_logic;
-  signal sig_en         : std_logic;
-  signal sig_cnt_up     : std_logic;
-  signal sig_cnt        : std_logic_vector(c_CNT_WIDTH - 1 downto 0);
+  signal sig_south      : std_logic_vector(2 downto 0);
+  signal sig_west       : std_logic_vector(2 downto 0);
 
 begin
 
-  -- Connecting testbench signals with cnt_up_down entity
+  -- Connecting testbench signals with tlc entity
   -- (Unit Under Test)
-  uut_cnt : entity work.cnt_up_down
-    generic map (
-      g_CNT_WIDTH => c_CNT_WIDTH
-    )
+  uut_tlc : entity work.tlc
     port map (
-      clk    => sig_clk_100mhz,
-      rst    => sig_rst,
-      en     => sig_en,
-      cnt_up => sig_cnt_up,
-      cnt    => sig_cnt
+      clk   => sig_clk_100mhz,
+      rst   => sig_rst,
+      south => sig_south,
+      west  => sig_west
     );
-
-    
 
   --------------------------------------------------------
   -- Clock generation process
@@ -62,7 +54,7 @@ begin
   p_clk_gen : process is
   begin
 
-    while now < 750 ns loop             -- 75 periods of 100MHz clock
+    while now < 10000 ns loop -- 10 usec of simulation
 
       sig_clk_100mhz <= '0';
       wait for c_CLK_100MHZ_PERIOD / 2;
@@ -70,7 +62,8 @@ begin
       wait for c_CLK_100MHZ_PERIOD / 2;
 
     end loop;
-    wait;                               -- Process is suspended forever
+
+    wait;
 
   end process p_clk_gen;
 
@@ -81,15 +74,14 @@ begin
   begin
 
     sig_rst <= '0';
-    wait for 12 ns;
+    wait for 200 ns;
 
     -- Reset activated
     sig_rst <= '1';
-    wait for 73 ns;
+    wait for 500 ns;
 
     -- Reset deactivated
     sig_rst <= '0';
-
     wait;
 
   end process p_reset_gen;
@@ -101,19 +93,7 @@ begin
   begin
 
     report "Stimulus process started";
-
-    -- Enable counting
-    sig_en <= '1';
-
-    -- Change counter direction
-    sig_cnt_up <= '1';
-    wait for 380 ns;
-    sig_cnt_up <= '0';
-    wait for 186 ns;
-
-    -- Disable counting
-    sig_en <= '0';
-
+    -- No other input data is needed.
     report "Stimulus process finished";
     wait;
 

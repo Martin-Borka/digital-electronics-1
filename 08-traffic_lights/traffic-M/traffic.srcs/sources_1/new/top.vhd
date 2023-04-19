@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/28/2023 12:00:15 PM
+-- Create Date: 03/28/2023 11:59:34 AM
 -- Design Name: 
 -- Module Name: top - Behavioral
 -- Project Name: 
@@ -39,12 +39,11 @@ entity top is
            LED17_R : out STD_LOGIC;
            LED17_G : out STD_LOGIC;
            LED17_B : out STD_LOGIC;
+           BTNU : out STD_LOGIC;
            BTNC : in STD_LOGIC);
 end top;
-------------------------------------------------------------
--- Architecture body for top level
-------------------------------------------------------------
-architecture behavioral of top is
+
+architecture Behavioral of top is
 
 begin
     --------------------------------------------------------
@@ -53,15 +52,18 @@ begin
         port map(
             clk   => CLK100MHZ,
             rst => BTNC,
-            south(2) => LED16_R,
-            south(1) => LED16_G,
-            south(0) => LED16_B,
-            west(2) => LED17_R,
-            west(1) => LED17_G,
-            west(0) => LED17_B
-            
             -- MAP TWO RGB LEDS HERE
+        --    zelW => BTNU,
+            
+           south(2) => LED16_R, 
+           south(1) => LED16_G,
+           south(0) => LED16_B,
+           
+           west (2) => LED17_R,
+           west (1) => LED17_G,
+           west (0) => LED17_B
+
+
 
         );
-
-end architecture behavioral;
+end architecture Behavioral;

@@ -84,7 +84,7 @@ begin
       -- FOR IMPLEMENTATION, CHANGE THIS VALUE TO 400,000
       -- 4      @ 4 ns
       -- 400000 @ 4 ms
-      g_max => 400000
+      g_max => 4
     )
     port map (
       clk =>  clk, -- WRITE YOUR CODE HERE

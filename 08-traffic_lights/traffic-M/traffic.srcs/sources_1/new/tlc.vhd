@@ -54,24 +54,26 @@ architecture behavioral of tlc is
   );
 
   -- Define the signal that uses different states
-  signal sig_state : t_state;
+  signal sig_state : t_state;  --vnitt?nín signál, pomocí kterého vwtvím kód switch case
 
   -- Internal clock enable
   signal sig_en : std_logic;
 
   -- Local delay counter
   signal sig_cnt : unsigned(4 downto 0);
+  
+  signal zelW: std_logic;
 
   -- Specific values for local counter
-  constant c_DELAY_4SEC : unsigned(4 downto 0) := b"1_0000";
-  constant c_DELAY_2SEC : unsigned(4 downto 0) := b"0_1000";
-  constant c_DELAY_1SEC : unsigned(4 downto 0) := b"0_0100";
-  constant c_ZERO       : unsigned(4 downto 0) := b"0_0000";
+  constant c_DELAY_4SEC : unsigned(4 downto 0) := b"1_0000"; -- 4s
+  constant c_DELAY_2SEC : unsigned(4 downto 0) := b"0_1000"; -- 2s 
+  constant c_DELAY_1SEC : unsigned(4 downto 0) := b"0_0100"; -- 1s = (250ms * 4)
+  constant c_ZERO       : unsigned(4 downto 0) := b"0_0000"; -- konstanta na vynulování ?asu
 
   -- Output traffic lights' values
-  constant c_RED    : std_logic_vector(2 downto 0) := b"100";
-  constant c_YELLOW : std_logic_vector(2 downto 0) := b"110";
-  constant c_GREEN  : std_logic_vector(2 downto 0) := b"010";
+  constant c_RED    : std_logic_vector(2 downto 0) := b"100"; -- RGB
+  constant c_YELLOW : std_logic_vector(2 downto 0) := b"110"; -- RGB
+  constant c_GREEN  : std_logic_vector(2 downto 0) := b"010"; -- RGB
 
 begin
 
@@ -85,7 +87,7 @@ begin
       -- FOR IMPLEMENTATION, CALCULATE VALUE: 250 ms / (1/100 MHz)
       -- 1   @ 10 ns
       -- ??? @ 250 ms
-      g_MAX => 1-- 25000000
+      g_MAX => 5 ------25000000-----------------------------------------------------------
     )
     port map (
       clk => clk,
@@ -111,7 +113,7 @@ begin
         -- variable and changes to the next state according
         -- to the delay value.
         case sig_state is
-
+------------------
           when WEST_STOP =>
             -- Count up to c_DELAY_2SEC
             if (sig_cnt < c_DELAY_2SEC) then
@@ -122,52 +124,61 @@ begin
               -- Reset local counter value
               sig_cnt <= c_ZERO;
             end if;
-
+--------------------
           when WEST_GO =>
-            
-            if (sig_cnt < c_DELAY_4SEC) then
-                sig_cnt <= sig_cnt + 1;
-            else
-               sig_state <= WEST_WAIT;
-               sig_cnt <= c_ZERO;
-            end if;
-            
-          when WEST_WAIT =>
-            
-            if (sig_cnt < c_DELAY_1SEC) then
-                sig_cnt <= sig_cnt +1;
-            else
-                sig_state <= SOUTH_STOP;
-                sig_cnt <= c_ZERO;
-            end if;
-            
-          when SOUTH_STOP =>
-          
-            if (sig_cnt < c_DELAY_2SEC) then
-                sig_cnt <= sig_cnt +1 ;
-            else
-                sig_state <= SOUTH_GO;
-                sig_cnt <= c_ZERO;
-            end if;
-           
-          when SOUTH_GO =>
-          
-            if (sig_cnt < c_DELAY_4SEC) then
-                sig_cnt <= sig_cnt + 1;
-            else
-                sig_state <= SOUTH_WAIT;
-                sig_cnt <= c_ZERO;
-            end if;
-            
-          when SOUTH_WAIT =>
-            if (sig_cnt < c_DELAY_1SEC) then
-                sig_cnt <= sig_cnt + 1;
-            else
-                sig_state <= WEST_STOP;
-                sig_cnt <= c_ZERO;
-            end if;
             -- WRITE OTHER STATES HERE
-
+            if (sig_cnt < c_DELAY_4SEC) then
+              sig_cnt <= sig_cnt + 1;
+            else
+              -- Move to the next state
+              sig_state <= WEST_WAIT;
+              -- Reset local counter value
+              sig_cnt <= c_ZERO;
+            end if;
+---------------------
+          when WEST_WAIT =>
+            -- WRITE OTHER STATES HERE
+            if (sig_cnt < c_DELAY_1SEC) then
+              sig_cnt <= sig_cnt + 1;
+            else
+              -- Move to the next state
+              sig_state <= SOUTH_STOP;
+              -- Reset local counter value
+              sig_cnt <= c_ZERO;
+            end if;
+---------------------
+          when SOUTH_STOP =>
+            -- WRITE OTHER STATES HERE
+            if (sig_cnt < c_DELAY_2SEC) then
+              sig_cnt <= sig_cnt + 1;
+            else
+              -- Move to the next state
+              sig_state <= SOUTH_GO;
+              -- Reset local counter value
+              sig_cnt <= c_ZERO;
+            end if;
+---------------------
+          when SOUTH_GO =>
+            -- WRITE OTHER STATES HERE
+            if (sig_cnt < c_DELAY_4SEC) then
+              sig_cnt <= sig_cnt + 1;
+            else
+              -- Move to the next state
+              sig_state <= SOUTH_WAIT;
+              -- Reset local counter value
+              sig_cnt <= c_ZERO;
+            end if;
+---------------------
+          when SOUTH_WAIT =>
+            -- WRITE OTHER STATES HERE
+            if (sig_cnt < c_DELAY_1SEC) then
+              sig_cnt <= sig_cnt + 1;
+            else
+              -- Move to the next state
+              sig_state <= WEST_STOP;
+              -- Reset local counter value
+              sig_cnt <= c_ZERO;
+            end if;
 
           when others =>
             -- It is a good programming practice to use the
@@ -193,31 +204,37 @@ begin
   p_output_fsm : process (sig_state) is
   begin
 
+   if (zelW = '1') then                    -- Synchronous reset
+        sig_state <= WEST_GO;              -- Init state
+        sig_cnt   <= c_ZERO;                 -- Clear delay counter
+     
+      
+    end if;
+
     case sig_state is
       when WEST_STOP =>
         south <= c_RED;
         west  <= c_RED;
 
       when WEST_GO =>
-        south <= c_RED;
-        west <= c_GREEN;
-        
+       south <= c_RED;
+        west  <= c_GREEN;
+     
       when WEST_WAIT =>
-        south <= c_RED;
-        west <= c_YELLOW;
-      
-      when SOUTH_STOP =>
-        south <= c_RED;
-        west <= c_RED;
-      
-      when SOUTH_GO =>
-        south <= c_GREEN;
-        west <= c_RED;
+       south <= c_RED;
+        west  <= c_YELLOW;
         
-      when SOUTH_WAIT =>
-        south <= c_YELLOW;
-        west <= c_RED;  
-        -- WRITE OTHER STATES HERE
+         when SOUTH_STOP =>
+       south <= c_RED;
+        west  <= c_RED;
+        
+         when SOUTH_GO =>
+       south <= c_GREEN;
+        west  <= c_RED;
+        
+         when SOUTH_WAIT =>
+       south <= c_YELLOW;
+        west  <= c_RED;
 
 
       when others =>

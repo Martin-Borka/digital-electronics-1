@@ -96,6 +96,15 @@ begin
 
     -- Reset deactivated
     sig_rst <= '0';
+    
+    wait for 100 ns;
+    
+    sig_rst <= '1';
+    wait for 20 ns;
+
+    -- Reset deactivated
+    sig_rst <= '0';
+    
     wait;
 
   end process p_reset_gen;
