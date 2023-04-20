@@ -10,8 +10,7 @@ entity vysilac is
            vystup   : out STD_LOGIC;
            led      : out STD_LOGIC_VECTOR(7 downto 0);
            data     : in  STD_LOGIC_VECTOR(7 downto 0);           
-           SW       : in STD_LOGIC_VECTOR(2 downto 0);
-           vstup    : in STD_LOGIC;
+           SW       : in STD_LOGIC_VECTOR(7 downto 0);
            vysledek : out STD_LOGIC_VECTOR(7 downto 0)
            
            );
@@ -66,7 +65,6 @@ vysilac : process (clk) is
          led <= SW;
         
             if (prepinac = '1') then
-            report "sig_cerx_en nastaven na 1";
             znak    <= data;
 
             case sig_cnt_4bit is
@@ -101,9 +99,6 @@ vysilac : process (clk) is
                     vystup <= znak(7);
                     
                 when "0101" => -- 5
-                    vystup <= '1';
-                
-                when "0000" => -- 0
                     vystup <= '1';
                 
                 when others =>
