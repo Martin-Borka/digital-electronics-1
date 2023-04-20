@@ -42,14 +42,7 @@ begin
         clk => CLK100MHZ,
         rst => BTNC,
         -- vystup => NEJAKY, -- simulace
-        data0 => SW(0),
-        data1 => SW(1),
-        data2 => SW(2),
-        data3 => SW(3),
-        data4 => SW(4),
-        data5 => SW(5),
-        data6 => SW(6),
-        data7 => SW(7),
+        data => SW,
         
         SW(2) => SW(13),
         SW(1) => SW(12),

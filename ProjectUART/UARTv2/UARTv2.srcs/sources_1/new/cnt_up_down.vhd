@@ -41,7 +41,7 @@ end entity cnt_up_down;
 -- Architecture body for N-bit counter
 ----------------------------------------------------------
 
-architecture behavioral of cnt_up_down is
+ architecture behavioral of cnt_up_down is
 
   signal sig_cnt : unsigned(g_CNT_WIDTH - 1 downto 0); --! Local counter
 
