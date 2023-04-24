@@ -20,21 +20,9 @@ architecture behavioral of vysilac is
 
     
     signal znak   : STD_LOGIC_VECTOR(7 downto 0);
-    -- Internal clock enable
     signal sig_en_2ms : std_logic;
-    -- Internal 2-bit counter for multiplexing 4 digits
+    
     signal sig_cnt_4bit : std_logic_vector(3 downto 0);
-    -- Internal 4-bit value
-    signal sig_hex : std_logic;
-        -- vnitrni propojeni nastaveni rychlosti
-    --signal clock_set : natural;
-       -- povoleni clock_enable_rx pro rx vzdy zaple, tx vzdy nutno zapnout
-    signal sig_cerx_en : std_logic;
-    -- Interní reset
-    signal sig_rst_cnt : std_logic;
-    signal sig_rx_cnt : std_logic := '0';
-   -- signal vysledek : std_logic_vector(7 downto 0);
-
 begin
  -------------------------------------------------------------------------------------------------
 clk_1 : entity work.clk_v
