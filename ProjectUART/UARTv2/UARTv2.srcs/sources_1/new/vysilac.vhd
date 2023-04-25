@@ -8,7 +8,6 @@ entity vysilac is
            clk      : in STD_LOGIC;
            rst      : in STD_LOGIC;
            vystup   : out STD_LOGIC;
-           led      : out STD_LOGIC_VECTOR(7 downto 0);
            data     : in  STD_LOGIC_VECTOR(7 downto 0);           
            SW       : in STD_LOGIC_VECTOR(7 downto 0);
            vysledek : out STD_LOGIC_VECTOR(7 downto 0)
@@ -50,43 +49,42 @@ bin_cnt0 : entity work.cnt_v
 vysilac : process (clk) is
   begin
    if(rising_edge(clk)) then
-         led <= SW;
         
             if (prepinac = '1') then
             znak    <= data;
 
             case sig_cnt_4bit is
-                when "1111" =>  --f
+                when "1111" => 
                     vystup <= '1';
                 
-                when "1110" => -- e
+                when "1110" => 
                     vystup <= '0';
 
-                when "1101" => -- d
+                when "1101" => 
                     vystup <= znak(0);
           
-                when "1100" => -- c
+                when "1100" => 
                     vystup <= znak(1);
           
-                when "1011" => -- b
+                when "1011" => 
                     vystup <= znak(2);
           
-                when "1010" => -- a
+                when "1010" =>
                     vystup <= znak(3);
 
-                when "1001" => -- 9
+                when "1001" =>
                     vystup <= znak(4);
                 
-                when "1000" => -- 8
+                when "1000" => 
                     vystup <= znak(5);
                 
-                when "0111" =>  -- 7
+                when "0111" => 
                     vystup <= znak(6);
                 
-                when "0110" => -- 6
+                when "0110" =>
                     vystup <= znak(7);
                     
-                when "0101" => -- 5
+                when "0101" => 
                     vystup <= '1';
                 
                 when others =>

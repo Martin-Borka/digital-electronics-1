@@ -6,7 +6,8 @@ entity uart_tx is
     Port ( clk   : in  STD_LOGIC;
            reset : in  STD_LOGIC;
            data  : in  STD_LOGIC_VECTOR (7 downto 0);
-           tx    : out STD_LOGIC);
+           tx    : out STD_LOGIC;
+           start : in  STD_LOGIC);
 end uart_tx;
 
 architecture Behavioral of uart_tx is
@@ -18,6 +19,7 @@ architecture Behavioral of uart_tx is
     signal tx_reg : std_logic;
     signal sig_en : std_logic;
     signal rst :    std_logic;
+    signal startx : std_logic;
     
 
 begin
@@ -41,7 +43,15 @@ begin
         if reset = '1' then
             count <= 0;
             tx_reg <= '1'; -- start bit
+            startx <= '0';
+            
+            --if rising_edge(start) then   
+           -- startx <= '1';
+            --end if; 
+           
         elsif rising_edge(clk) then
+            if startx = '1' then
+        
             if count = 0 then
                 tx_reg <= '0'; -- data bit 0
                 count <= count + 1;
@@ -51,7 +61,11 @@ begin
             elsif count = 8 then
                 tx_reg <= '1'; -- stop bit
                 count <= 0;
+                startx <= '0';
             end if;
+            
+            end if;
+            
         end if;
     end process;
 

@@ -13,7 +13,8 @@ entity top is
     SW        : in    std_logic_vector(7 downto 0); --! data values
     JA        : out   std_logic; --! vysilac 
     BTNC      : in    std_logic; --! Synchronous reset
-    LED       : out   std_logic_vector(7 downto 0)
+    LED       : out   std_logic_vector(7 downto 0);
+    BTNU      : in    std_logic --! start
   );
 end entity top;
 
@@ -35,6 +36,7 @@ begin
       clk      => CLK100MHZ,
       reset    => BTNC,
       tx       => JA,
+      --start    => BTNU,
       data(7 downto 0)     => SW(7 downto 0)
       
   
